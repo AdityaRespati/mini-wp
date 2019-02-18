@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-signin-client_id"
+    content="78483409069-mh1u5suj63gba471n2nphopkttjrlu09.apps.googleusercontent.com">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet">
+  <link rel="stylesheet" href="css/wysiwyg.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Index</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <div id="home">
+      <loginpage @change-display="changeShow" v-if="show=='loginpage'"></loginpage>
+      <registration @onsuccess="signInSuccess" @change-display="changeShow" v-if="show=='registration'"></registration>
+      <loginform @onsuccess="signInSuccess" v-if="show=='loginform'"></loginform>
+      <navbar @home="getHomePage" @search="searchArticle" @change-display="changeShow" @signout="signOut" v-if="show!=='loginpage' && show!='registration' && show!=='loginform'"></navbar>
+      <readlist :query-result="queryResult" :allarticles="allarticles" @change-display="changeShow" @show-this-article="showThisArticle" v-if="show=='readlist'"></readlist>
+      <write @publish="publish" v-if="show=='write'"></write>
+      <update :current-edit="currentEdit" @update-success="publish" v-if="show=='update'"></update>
+      <read :article="currentArticle" v-if="show=='read'"></read>
+      <user-article @show-this-article="showThisArticle" @update-article="updateArticle" @publish="publish" :userarticles="userarticles" @change-display="changeShow" v-if="show=='yours'"></user-article>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"
+    integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- components script-->
+  <script src="js/components/wysiwyg.js"></script>
+  <script src="js/components/readlist.js"></script>
+  <script src="js/components/write.js"></script>
+  <script src="js/components/read.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/user_article.js"></script>
+  <script src="js/components/loginpage.js"></script>
+  <script src="js/components/update.js"></script>
+  <script src="js/components/registration.js"></script>
+  <script src="js/components/loginform.js"></script>
+  <!-- parent script  -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

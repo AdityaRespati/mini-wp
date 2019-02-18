@@ -1,0 +1,27 @@
+html, body{
+  font-family: 'Nunito', sans-serif;
+  background-color: #f8f9fa;
+}
+
+.nav .nav-link {
+  background-color: white;
+  color: black;
+}
+
+.nav .nav-link:hover:not(.active) {
+  background-color: rgb(238, 238, 238);
+}
+
+.nav .nav-link:hover i {
+  color: rgb(3, 3, 3);
+}
+
+.nav-pills .nav-link.active {
+  background-color: rgb(122, 194, 199)
+}
+
+/* .card:hover{
+  transition: all .2s ease-in-out;
+  transform: scale(1.1, 1.1);
+} */
+
